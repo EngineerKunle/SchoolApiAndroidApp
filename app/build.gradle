@@ -36,6 +36,9 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.android.support:appcompat-v7:27.1.1'
     implementation 'com.android.support.constraint:constraint-layout:1.1.0'
+    implementation 'com.android.support:support-v4:27.1.1'
+
+    //rxjava
     implementation "io.reactivex.rxjava2:rxandroid:$rxAndroid"
     implementation "io.reactivex.rxjava2:rxjava:$rxJava"
 
@@ -43,9 +46,11 @@ dependencies {
     implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
     implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion"
 
+    //gson
+    implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+
     //dagger
     implementation "com.google.dagger:dagger:$daggerVersion"
-    implementation 'com.android.support:support-v4:27.1.1'
     annotationProcessor "com.google.dagger:dagger-compiler:$daggerVersion"
 
     testImplementation 'junit:junit:4.12'

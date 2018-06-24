@@ -27,6 +27,6 @@ public class StudentActivityPresenterImpl<V extends StudentActivityContract.View
 
     @Override
     public void somethingPressed() {
-        getView().showDebugToast();
+        getView().startGetAllFragment();
     }
 }

@@ -70,8 +70,8 @@ public class TeacherFragment extends Fragment implements StudentActivityContract
     }
 
     @Override
-    public void showDebugToast() {
-        Toast.makeText(getContext(), "Button Pressed", Toast.LENGTH_LONG).show();
+    public void startGetAllFragment() {
+        Toast.makeText(getContext(), "Get All Student Fragment", Toast.LENGTH_LONG).show();
         changeFragment();
     }
 
