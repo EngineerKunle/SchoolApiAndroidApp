@@ -15,11 +15,13 @@ import javax.inject.Inject;
 
 import teamkunle.co.uk.schoolapiandroid.di.components.TeacherComponent;
 import teamkunle.co.uk.schoolapiandroid.di.module.TeacherModule;
+import teamkunle.co.uk.schoolapiandroid.ui.fragment.GetAllStudentFragment;
 
 
 public class TeacherFragment extends Fragment implements StudentActivityContract.View {
 
     private Button debugButton;
+    private static final String GET_ALL_FRAGMENT = "Get All Fragment";
 
     public TeacherFragment() {}
 
@@ -29,8 +31,17 @@ public class TeacherFragment extends Fragment implements StudentActivityContract
     private TeacherComponent component;
 
     public static TeacherFragment createInstance() {
-        TeacherFragment t = new TeacherFragment();
-        return t;
+        TeacherFragment teacherFragment = new TeacherFragment();
+        return teacherFragment;
+    }
+
+    private void initComponent() {
+        component = SchoolApplication.getApp()
+                .getComponent()
+                .plus(new TeacherModule());
+        component.inject(this);
+
+        presenter.attach(this);
     }
 
 
@@ -52,17 +63,24 @@ public class TeacherFragment extends Fragment implements StudentActivityContract
         initComponent();
     }
 
-    private void initComponent() {
-        component = SchoolApplication.getApp()
-                .getComponent()
-                .plus(new TeacherModule());
-        component.inject(this);
-
-        presenter.attach(this);
+    @Override
+    public void onDetach() {
+        presenter.detach();
+        super.onDetach();
     }
 
     @Override
     public void showDebugToast() {
         Toast.makeText(getContext(), "Button Pressed", Toast.LENGTH_LONG).show();
+        changeFragment();
+    }
+
+    private void changeFragment() {
+        getActivity()
+                .getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.student_activity_container, GetAllStudentFragment.createInstance())
+                .addToBackStack(null)
+                .commit();
     }
 }
