@@ -5,6 +5,8 @@ import android.content.Context;
 import dagger.Module;
 import dagger.Provides;
 import teamkunle.co.uk.schoolapiandroid.SchoolApplication;
+import teamkunle.co.uk.schoolapiandroid.api.StudentAPI;
+import teamkunle.co.uk.schoolapiandroid.api.StudentAPIImpl;
 import teamkunle.co.uk.schoolapiandroid.di.PerApplication;
 
 @Module
@@ -26,4 +28,8 @@ public class SchoolAppModule {
     SchoolApplication provideApp() {
         return application;
     }
+
+    @Provides
+    @PerApplication
+    StudentAPI provideStudentAPi(StudentAPIImpl api){return api;}
 }
