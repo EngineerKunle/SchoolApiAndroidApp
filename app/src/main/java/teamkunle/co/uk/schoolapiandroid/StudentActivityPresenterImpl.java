@@ -3,7 +3,7 @@ package teamkunle.co.uk.schoolapiandroid;
 import javax.inject.Inject;
 
 public class StudentActivityPresenterImpl<V extends StudentActivityContract.View>
-        implements StudentActivityContract.presenter<V> {
+        implements StudentActivityContract.Presenter<V> {
 
     private V view;
 
@@ -26,7 +26,7 @@ public class StudentActivityPresenterImpl<V extends StudentActivityContract.View
     }
 
     @Override
-    public void somethingPressed() {
+    public void getAllStudentList() {
         getView().startGetAllFragment();
     }
 }

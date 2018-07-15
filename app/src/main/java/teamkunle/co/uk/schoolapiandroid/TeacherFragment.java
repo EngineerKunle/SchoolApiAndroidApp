@@ -15,18 +15,17 @@ import javax.inject.Inject;
 
 import teamkunle.co.uk.schoolapiandroid.di.components.TeacherComponent;
 import teamkunle.co.uk.schoolapiandroid.di.module.TeacherModule;
-import teamkunle.co.uk.schoolapiandroid.ui.fragment.GetAllStudentFragment;
+import teamkunle.co.uk.schoolapiandroid.ui.getallstudent.GetAllStudentFragment;
 
 
 public class TeacherFragment extends Fragment implements StudentActivityContract.View {
 
-    private Button debugButton;
-    private static final String GET_ALL_FRAGMENT = "Get All Fragment";
+    private Button getAllStudentButton;
 
     public TeacherFragment() {}
 
     @Inject
-    StudentActivityContract.presenter<StudentActivityContract.View> presenter;
+    StudentActivityContract.Presenter<StudentActivityContract.View> Presenter;
 
     private TeacherComponent component;
 
@@ -41,7 +40,7 @@ public class TeacherFragment extends Fragment implements StudentActivityContract
                 .plus(new TeacherModule());
         component.inject(this);
 
-        presenter.attach(this);
+        Presenter.attach(this);
     }
 
 
@@ -50,9 +49,9 @@ public class TeacherFragment extends Fragment implements StudentActivityContract
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_teacher, container, false);
 
-        debugButton = view.findViewById(R.id.get_all_student_button);
+        getAllStudentButton = view.findViewById(R.id.get_all_student_button);
 
-        debugButton.setOnClickListener((v) -> presenter.somethingPressed());
+        getAllStudentButton.setOnClickListener((v) -> Presenter.getAllStudentList());
 
         return view;
     }
@@ -65,7 +64,7 @@ public class TeacherFragment extends Fragment implements StudentActivityContract
 
     @Override
     public void onDetach() {
-        presenter.detach();
+        Presenter.detach();
         super.onDetach();
     }
 

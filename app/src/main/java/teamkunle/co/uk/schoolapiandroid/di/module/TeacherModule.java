@@ -11,7 +11,7 @@ public class TeacherModule {
 
     @Provides
     @PerFragment
-    StudentActivityContract.presenter<StudentActivityContract.View> provideStudentPresenter
+    StudentActivityContract.Presenter<StudentActivityContract.View> provideStudentPresenter
             (StudentActivityPresenterImpl<StudentActivityContract.View> presenter){
         return presenter;
     }

@@ -9,10 +9,9 @@ public interface StudentActivityContract {
     }
 
     @PerFragment
-    interface presenter<V extends View> {
+    interface Presenter<V extends View> {
         void attach(V view);
-        void somethingPressed();
+        void getAllStudentList();
         void detach();
     }
-
 }

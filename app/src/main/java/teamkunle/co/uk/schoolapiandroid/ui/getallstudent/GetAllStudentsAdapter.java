@@ -1,4 +1,4 @@
-package teamkunle.co.uk.schoolapiandroid.ui.fragment;
+package teamkunle.co.uk.schoolapiandroid.ui.getallstudent;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -13,11 +13,11 @@ import java.util.List;
 import teamkunle.co.uk.schoolapiandroid.R;
 import teamkunle.co.uk.schoolapiandroid.api.model.StudentModel;
 
-public class GetAllStudents extends RecyclerView.Adapter<GetAllStudents.ViewHolder> {
+public class GetAllStudentsAdapter extends RecyclerView.Adapter<GetAllStudentsAdapter.ViewHolder> {
 
     private List<StudentModel> studentModelList;
 
-    public GetAllStudents(List<StudentModel> studentModelList) {
+    public GetAllStudentsAdapter(List<StudentModel> studentModelList) {
         this.studentModelList = studentModelList;
     }
 
