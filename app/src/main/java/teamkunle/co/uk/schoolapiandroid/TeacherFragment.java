@@ -43,6 +43,14 @@ public class TeacherFragment extends Fragment implements StudentActivityContract
         Presenter.attach(this);
     }
 
+    private void changeFragment() {
+        getActivity()
+                .getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.student_activity_container, GetAllStudentFragment.createInstance())
+                .addToBackStack(null)
+                .commit();
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -72,14 +80,5 @@ public class TeacherFragment extends Fragment implements StudentActivityContract
     public void startGetAllFragment() {
         Toast.makeText(getContext(), "Get All Student Fragment", Toast.LENGTH_LONG).show();
         changeFragment();
-    }
-
-    private void changeFragment() {
-        getActivity()
-                .getSupportFragmentManager()
-                .beginTransaction()
-                .replace(R.id.student_activity_container, GetAllStudentFragment.createInstance())
-                .addToBackStack(null)
-                .commit();
     }
 }

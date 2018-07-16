@@ -4,4 +4,6 @@
     <string name="all_students_name">First Name</string>
     <string name="all_students_surname">Surname</string>
     <string name="all_students_age">27</string>
+
+    <string name="get_all_student_fragment_error">Sorry could not get the lists of students please try again</string>
 </resources>
