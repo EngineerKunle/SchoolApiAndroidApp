@@ -34,7 +34,15 @@ public class GetAllStudentsAdapter extends RecyclerView.Adapter<GetAllStudentsAd
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        final StudentModel studentModel = studentModelList.get(position);
 
+        final TextView firstName = holder.firstName;
+        final TextView surname = holder.surname;
+        final TextView age = holder.age;
+
+        firstName.setText(studentModel.getName());
+        surname.setText(studentModel.getSurname());
+        age.setText(studentModel.getAge().toString());
     }
 
     @Override

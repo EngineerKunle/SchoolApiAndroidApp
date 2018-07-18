@@ -7,7 +7,7 @@ import teamkunle.co.uk.schoolapiandroid.api.model.StudentModel;
 public interface GetAllStudentContract {
 
     interface View {
-        void populateRecyclerView(List<StudentModel> model);
+        void populateRecyclerView(List<StudentModel> models);
         void errorAPICall(Throwable t);
     }
 

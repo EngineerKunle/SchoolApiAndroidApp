@@ -42,7 +42,6 @@ public class StudentModel {
         return surname;
     }
 
-
     public Integer getAge() {
         return age;
     }

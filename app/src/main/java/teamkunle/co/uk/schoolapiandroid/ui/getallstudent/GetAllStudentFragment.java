@@ -13,7 +13,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import java.util.Collections;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -33,6 +32,7 @@ public class GetAllStudentFragment extends Fragment implements GetAllStudentCont
     private RecyclerView getAllStudentRecyclerView;
     private RecyclerView.LayoutManager layoutManager;
     private SwipeRefreshLayout swipeContainer;
+    private GetAllStudentsAdapter adapter;
 
     private static final String TAG = GetAllStudentFragment.class.getSimpleName();
 
@@ -57,15 +57,7 @@ public class GetAllStudentFragment extends Fragment implements GetAllStudentCont
 
 
         getAllStudentRecyclerView = view.findViewById(R.id.list_of_students);
-        getAllStudentRecyclerView.setHasFixedSize(true);
 
-        GetAllStudentsAdapter adapter = new GetAllStudentsAdapter(Collections.emptyList());
-
-        getAllStudentRecyclerView.setAdapter(adapter);
-
-        layoutManager = new LinearLayoutManager(getContext());
-
-        getAllStudentRecyclerView.setLayoutManager(layoutManager);
     }
 
     private void initComponent() {
@@ -99,8 +91,15 @@ public class GetAllStudentFragment extends Fragment implements GetAllStudentCont
     }
 
     @Override
-    public void populateRecyclerView(List<StudentModel> model) {
-        Log.d(TAG, "The student we have here is " + model.get(4).getName());
+    public void populateRecyclerView(List<StudentModel> models) {
+        getAllStudentRecyclerView.setHasFixedSize(true);
+        adapter = new GetAllStudentsAdapter(models);
+
+        getAllStudentRecyclerView.setAdapter(adapter);
+
+        layoutManager = new LinearLayoutManager(getContext());
+
+        getAllStudentRecyclerView.setLayoutManager(layoutManager);
         swipeContainer.setRefreshing(false);
     }
 
